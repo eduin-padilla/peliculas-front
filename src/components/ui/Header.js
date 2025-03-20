@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom'
 
 export const Header = () => {
     return (
-        <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+        <nav className="navbar navbar-expand-lg  ">
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">Media</NavLink>
+                <NavLink className="navbar-brand nav-link" to="/">Media</NavLink>
 
 
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

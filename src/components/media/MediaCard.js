@@ -5,13 +5,13 @@ export const MediaCard = (props) => {
     const { Media } = props;
 
     return (
-        <div className="col mt-3">
+        <div className="col mt-3 ">
             <div className="card">
-                <img src={Media.imagenPortada} className="card-img-top" alt="..."/>
-                <div className="card-body">
-                    <h5 className="card-title"  >Caracteristicas</h5>
+                <img src={Media.imagenPortada} className="card-img-top " alt="..."/>
+                <div className="card-body ">
+                    <h5 className="card-title">Caracteristicas</h5>
                     <hr/>
-                    <p className="card-text ">Serial: {Media.serial}</p>
+                    <p className="card-text">Serial: {Media.serial}</p>
                     <p className="card-text">Titulo: {Media.titulo}</p>
                     <p className="card-text">Sinopsis: {Media.sinopsis}</p>
                     <p className="card-text">Fecha de estreno: {Media.añoEstreno}</p>

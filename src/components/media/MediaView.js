@@ -4,7 +4,7 @@ import { MediaCard } from './MediaCard';
 
 export const MediaView = () => {
 
-    const [moduloMedia, setMedia] = useState([]);
+    const [Media, setMedia] = useState([]);
 
     const listMedia = async () => {
 
@@ -24,9 +24,9 @@ export const MediaView = () => {
 
     return (
         <div className='container-fluid'>
-            <div className="mt-2 mb-2 row row-cols-1 row-cols-md-6 g-4">
+            <div className="mt-3 mb-2 row row-cols-1 row-cols-md-6 g-4">
                 {
-                    moduloMedia.map((Media) => {
+                    Media.map((Media) => {
                         return <MediaCard key={Media.id} Media={Media}/>
                     })
                 }
