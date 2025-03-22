@@ -11,6 +11,7 @@ export const MediaCard = (props) => {
                 <div className="card-body ">
                     <h5 className="card-title">Caracteristicas</h5>
                     <hr/>
+                    
                     <p className="card-text">Serial: {Media.serial}</p>
                     <p className="card-text">Titulo: {Media.titulo}</p>
                     <p className="card-text">Sinopsis: {Media.sinopsis}</p>

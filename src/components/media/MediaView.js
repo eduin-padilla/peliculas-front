@@ -5,8 +5,8 @@ import { MediaNew } from '../media/MediaNew';
 
 export const MediaView = () => {
 
-    const [ModuloMedia, setMedia] = useState([]);
-    const[ openModal, setOpenModal] = useState([false]);
+    const [Media, setMedia] = useState([]);
+    const[ openModal, setOpenModal] = useState( false );
 
     const listMedia = async () => {
 
@@ -24,28 +24,25 @@ export const MediaView = () => {
         listMedia();
     }, []);
 
+    const handleOpenModal = () => {
+        setOpenModal(!openModal);
+    }
     return (
         <div className='container-fluid'>
             <div className="mt-3 mb-2 row row-cols-1 row-cols-md-6 g-4">
                 {
-                    ModuloMedia.map((Media) => {
-                        return <MediaCard key={Media.id} Media={Media}/>
+                    Media.map((Media) => {
+                        return <MediaCard key = { Media._id } Media = { Media }/>
                     })
                 }
             </div>
-
-
-            
             {
-                openModal ? <MediaNew/> :
-                <button className='btn btn-primary' onClick={() => setOpenModal(!openModal)}>
-                    <i class= "fa-solid fa-plus"></i>
+                openModal ? <MediaNew handleOpenModal = { handleOpenModal } />: 
+                <button className='btn btn-primary new-media' onClick = { handleOpenModal }>
+                    <i className= "fa-solid fa-plus"></i>
                 </button>
             } 
-
         </div>
-
-        
     )
 }
 

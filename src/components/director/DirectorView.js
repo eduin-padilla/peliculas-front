@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
-// const DirectorView = () => {
-//   const [formData, setFormData] = useState({
-//     serial: '',
-//     titulo: '',
-//     sinopsis: '',
-//     fechaEstreno: '',
-//     genero: '',
-//     director: '',
-//     productora: '',
-//     tipo: ''
-//   });
+const DirectorView = () => {
+  // const [formData, setFormData] = useState({
+  //   serial: '',
+  //   titulo: '',
+  //   sinopsis: '',
+  //   fechaEstreno: '',
+  //   genero: '',
+  //   director: '',
+  //   productora: '',
+  //   tipo: ''
+  }; //)
+  
 
 //   const handleChange = (e) => {
 //     const { name, value } = e.target;
@@ -141,21 +142,8 @@ import React, { useState } from 'react';
 //               <button type="submit" className="btn btn-primary">Enviar</button>
 //           </div>
 //         </div>
-
-        
 //       </form>
 //     </div>
 //   );
-// };
 
-
-const DirectorView = () => {
-  return(
-    <div> DirectorView </div>
-  )
-    
-  
-}
-
-
-export default DirectorView;  
+export default DirectorView;
