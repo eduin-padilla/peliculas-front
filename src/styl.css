@@ -1,56 +1,109 @@
+
 body{
     background-color: #d4e6f1  ;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-.navbar{
-    background-color: #111133;
-}
-
-.nav-link{
-    transition: 0.2s;
-    transition: transform 0.3s ease-in-out;
-    font-weight: bold;
-    color: white;
-}
-.nav-link:hover{
+hr{
+    border-top: 2px solid white;
     border-radius: 20%;
-    transition: 0.3s;
-    background-color: #a9cce3;
-    transform: scale(1.2);
-}
-
-.card{
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    background-color: #a6cae054;
-    border-color: rgb(202, 202, 202);
-    color: black;
-}
-
-.card:hover {
-    box-shadow: 0 8px 8px cadetblue;
-    transform: scale(1.2);
 }
 
 .no-padding{
     padding: 0%;
 }
 
+
+.navbar-toggler-icon,
+.navbar-toggler{
+    background-color: #1f618d ;
+}
+
+
+.navbar{
+    background-color: #cacfd2c2;
+}
+
+.nav-link.active {
+    color: black !important;  
+    font-weight: bold;      
+}
+
+.nav-link{
+    transition: 0.2s;
+    transition: transform 0.3s ease-in-out;
+    font-weight: bold;
+    color: black;
+}
+.nav-link:hover{
+    color: black;
+    border-radius: 20%;
+    transition: 0.3s;
+    background-color: #1f618d;
+    transform: scale(1.2);
+}
+
+.card{
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background-color: #1f618d;
+    border-color: rgb(202, 202, 202);
+    }
+
+.card:hover {
+    box-shadow: 0 8px 8px cadetblue;
+    transform: scale(1.2);
+}
+
 .card-img-top{
-    
-    width: 200px;  /* Ancho fijo */
-    height: 150px; /* Alto fijo */
-    object-fit: cover; /* Recorta la imagen para ajustarla sin deformarla */
+    width: 200px; 
+    height: 150px; 
+    object-fit: cover; 
     padding: 5% 5% 0%; 
     width: 100%;
     height: 100%;
     border-image: 50%;
     object-fit: cover;
     border-radius: 20px;
+}
 
+.col-auto{
+    margin-top : 2.8%;
+}
+
+.btn{
+    font-weight: 600;
+}
+
+.new-media{
+    margin-top: 2%;
+    bottom: 20px;
+    font-size: 25px;
+    padding: 20px;
+    right: 10px;
+    position: fixed;
+    background-color: #1f618d;
+    color: black;
+    border-radius: 100%;
+    transition: 0.3s;
+    box-shadow: 0 8px 8px cadetblue;
+    transform: scale(1.2);
+}
+
+
+.sidebear{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    height: 100%;
+    overflow-y: auto;
 }
 
 

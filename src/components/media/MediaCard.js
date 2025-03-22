@@ -5,8 +5,8 @@ export const MediaCard = (props) => {
     const { Media } = props;
 
     return (
-        <div className="col mt-3 ">
-            <div className="card">
+        <div className="col mt-1 ">
+            <div className="card custom-card" >
                 <img src={Media.imagenPortada} className="card-img-top " alt="..."/>
                 <div className="card-body ">
                     <h5 className="card-title">Caracteristicas</h5>

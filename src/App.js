@@ -6,7 +6,7 @@ import { MediaView } from "./components/media/MediaView";
 import { ProductoraView } from "./components/productora/ProductoraView";
 import { TipoView } from "./components/tipo/TipoView";
 import DirectorView from "./components/director/DirectorView"; // Aquí NO debes usar llaves
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {
