@@ -162,11 +162,24 @@ export const MediaNew = ( {handleOpenModal, listMedia} ) => {
                                         required
                                     />
                                 </div>
+
+                                <div className="col-12 col-md-6">
+                                    <label htmlFor="titulo" className="form-label">Imagen:</label>
+                                    <input
+                                        type="url"
+                                        id="imagen"
+                                        name="imagen"
+                                        className="form-control"
+                                        value={valoresFrom.imagen}
+                                        onChange={handleOnChange}
+                                        required
+                                    />
+                                </div>
                             </div>
                             <div>
                                 <div className="row mb-3">
                                     <div className="col-12">
-                                        <label htmlFor="sinopsis" className="form-label">Sinopsis:</label>
+                                        <label htmlFor="Sinopsis" className="form-label">Sinopsis:</label>
                                         <textarea
                                             id="sinopsis"
                                             name="sinopsis"
