@@ -14,7 +14,7 @@ export const MediaNew = ( {handleOpenModal, listMedia} ) => {
     const [genero, setGenero] = useState([]);
     const [productora, setProductora] = useState([]);
     const [tipo, setTipo] = useState([]);
-    const [valoresFrom, setValoresFrom] = useState([]);
+    const [valoresFrom, setValoresFrom] = useState({});
     const {
         Serial ="",
         imagen ="",
@@ -73,57 +73,42 @@ export const MediaNew = ( {handleOpenModal, listMedia} ) => {
     }, []);
 
 
-    const handleOnChange = ({ target }) => {
-        const { name, value } = target;
-        setValoresFrom({ ...valoresFrom, [name]: value });
-    }
+    const handleOnChange = (e) => {
+        setValoresFrom(prevState => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }));
+    };
+    
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        const media = {
-            Serial,
-            imagen,
-            Titulo,
-            fechaDeEstreno,
-            Director,
-            Productora,
-            Genero,
-            Tipo,
-            Sinopsis,
-
-            director:{
-                _id: Director
-            },
-
-            genero:{
-                _id: Genero
-            },
-
-            productora:{
-                _id: Productora
-            }, 
-
-            tipo:{
-                _id: Tipo
-            }
+        if (!Serial || !Titulo || !fechaDeEstreno || !Director || !Productora || !Genero || !Tipo || !Sinopsis) {
+            Swal.fire('Error', 'Todos los campos son obligatorios', 'error');
+            return;
         }
-        console.log(media);
-
-        try{
-            Swal.fire({
-                allowOutsideClick: false,
-                text:'cargando....'
-            });
+    
+        const media = {
+            Serial, imagen, Titulo, fechaDeEstreno, Director, Productora, Genero, Tipo, Sinopsis,
+            director: { _id: Director },
+            genero: { _id: Genero },
+            productora: { _id: Productora },
+            tipo: { _id: Tipo }
+        };
+    
+        try {
+            Swal.fire({ allowOutsideClick: false, text: 'Cargando...' });
             Swal.showLoading();
-            const { data } = await createMedia(media);
+            await createMedia(media);
             handleOpenModal();
             listMedia();
             Swal.close();
-        }catch (error) {
-            console.log(error);
-            Swal.close();
+        } catch (error) {
+            console.error(error);
+            Swal.fire('Error', 'No se pudo guardar la película', 'error');
         }
-    }
+    };
+    
 
     return (
         <div className='sidebear'>
@@ -132,11 +117,11 @@ export const MediaNew = ( {handleOpenModal, listMedia} ) => {
                         <div className='col'>
                             <div className='sidebear-header'>
                                 <h3 > Nueva Pelicula </h3>
-                                <i class="fa-solid fa-xmark" onClick={handleOpenModal}></i>
+                                <i className="fa-solid fa-xmark" onClick={handleOpenModal}></i>
                             </div>
-                            <hr class="hr"/>
+                            <hr className="hr"/>
 
-                            <form onSubmit={handleOnSubmit}>
+                            <form onSubmit={(e) => handleOnSubmit (e)}>
                             <div className="row mb-3">
                                 <div className="col-12 col-md-6">
                                     <label htmlFor="serial" className="form-label">Serial:</label>
@@ -145,8 +130,8 @@ export const MediaNew = ( {handleOpenModal, listMedia} ) => {
                                         id="serial"
                                         name="serial"
                                         className="form-control"
-                                        value={valoresFrom.serial}
-                                        onChange={handleOnChange}
+                                        value={valoresFrom.Serial}
+                                        onChange={ e => handleOnChange (e)}
                                         required
                                     />
                                 </div>
@@ -157,8 +142,8 @@ export const MediaNew = ( {handleOpenModal, listMedia} ) => {
                                         id="titulo"
                                         name="titulo"
                                         className="form-control"
-                                        value={valoresFrom.titulo}
-                                        onChange={handleOnChange}
+                                        value={valoresFrom.Titulo}
+                                        onChange={ e => handleOnChange (e)}
                                         required
                                     />
                                 </div>
@@ -171,7 +156,7 @@ export const MediaNew = ( {handleOpenModal, listMedia} ) => {
                                         name="imagen"
                                         className="form-control"
                                         value={valoresFrom.imagen}
-                                        onChange={handleOnChange}
+                                        onChange={ e => handleOnChange (e)}
                                         required
                                     />
                                 </div>
@@ -184,8 +169,8 @@ export const MediaNew = ( {handleOpenModal, listMedia} ) => {
                                             id="sinopsis"
                                             name="sinopsis"
                                             className="form-control"
-                                            value={valoresFrom.serial}
-                                            onChange={handleOnChange}
+                                            value={valoresFrom.Sinopsis}
+                                            onChange={ e => handleOnChange (e)}
                                             required
                                         />
                                     </div>
@@ -198,62 +183,66 @@ export const MediaNew = ( {handleOpenModal, listMedia} ) => {
                                             id="fechaEstreno"
                                             name="fechaEstreno"
                                             className="form-control"
-                                            value={valoresFrom.fechaEstreno}
-                                            onChange={handleOnChange}
+                                            value={valoresFrom.fechaDeEstreno}
+                                            onChange={ e => handleOnChange (e)}
                                             required
                                         />
                                     </div>
                                     <div className="col-12 col-md-6">
                                         <label htmlFor="genero" className="form-label">Género:</label>
-                                        <input
-                                            type="text"
-                                            id="genero"
-                                            name="genero"
-                                            className="form-control"
-                                            value={valoresFrom.genero}
-                                            onChange={handleOnChange}
+                                        <select className='form-select'
                                             required
-                                        />
+                                            name='Genero'
+                                            value={Genero}  // Cambiado de "genero" a "Genero"
+                                            onChange={e => handleOnChange(e)}>
+                                            <option value="">Seleccione un género</option>
+                                            {genero.map((g) => (
+                                                <option key={g._id} value={g._id}>{g.nombre}</option>
+                                            ))}
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="row mb-3">
                                     <div className="col-12 col-md-6">
                                         <label htmlFor="director" className="form-label">Director:</label>
-                                        <input
-                                            type="text"
-                                            id="director"
-                                            name="director"
-                                            className="form-control"
-                                            value={valoresFrom.director}
-                                            onChange={handleOnChange}
+                                        <select className='form-select'
                                             required
-                                        />
+                                            name='Director'
+                                            value={Director}  // Cambiado de "director" a "Director"
+                                            onChange={e => handleOnChange(e)}>
+                                            <option value="">Seleccione un Director</option>
+                                            {director.map((d) => (
+                                                <option key={d._id} value={d._id}>{d.nombre}</option>
+                                            ))}
+                                        </select>
                                     </div>
                                     <div className="col-12 col-md-6">
                                         <label htmlFor="productora" className="form-label">Productora:</label>
-                                        <input
-                                            type="text"
-                                            id="productora"
-                                            name="productora"
-                                            className="form-control"
-                                            value={valoresFrom.productora}
-                                            onChange={handleOnChange}
+                                        <select className='form-select'
                                             required
-                                        />
+                                            name='Productora'
+                                            value={Productora}  // Cambiado de "productora" a "Productora"
+                                            onChange={e => handleOnChange(e)}>
+                                            <option value="">Seleccione una productora</option>
+                                            {productora.map((p) => (
+                                                <option key={p._id} value={p._id}>{p.nombre}</option>
+                                            ))}
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="row mb-3">
                                     <div className="col-12 col-md-6">
                                         <label htmlFor="tipo" className="form-label">Tipo:</label>
-                                        <input
-                                            type="text"
-                                            id="tipo"
-                                            name="tipo"
-                                            className="form-control"
-                                            value={valoresFrom.tipo}
-                                            onChange={handleOnChange}
+                                        <select className='form-select'
                                             required
-                                        />
+                                            name='Tipo'
+                                            value={Tipo}  // Cambiado de "tipo" a "Tipo"
+                                            onChange={e => handleOnChange(e)}>
+                                            <option value="">Seleccione un tipo de película</option>
+                                            {tipo.map((t) => (
+                                                <option key={t._id} value={t._id}>{t.nombre}</option>
+                                            ))}
+                                        </select>
                                     </div>
                                     <div className="col-auto">
                                         <button type="submit" className="btn btn-primary">Enviar</button>
