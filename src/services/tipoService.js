@@ -2,7 +2,7 @@ import { axiosInstance }  from "../helper/axiosConfig";
 
 const getTipo = () => {
     return axiosInstance.get('moduloTipo', {
-        headers: {
+        header: {
                 'Content-Type': 'application/json',
             }
         });
@@ -10,7 +10,7 @@ const getTipo = () => {
 
 const createTipo = (data) => {
     return axiosInstance.post('moduloTipo', data, {
-        headers: {
+        header: {
                 'Content-Type': 'application/json',
             }
         });
@@ -18,7 +18,7 @@ const createTipo = (data) => {
 
 const updateTipo = (moduloTipoId, data) => {
     return axiosInstance.put(`moduloTipo/${moduloTipoId}`, data, {
-        headers: {
+        header: {
                 'Content-Type': 'application/json',
             }
         });
@@ -26,7 +26,7 @@ const updateTipo = (moduloTipoId, data) => {
 
 const deleteTipo = (id) => {
     return axiosInstance.delete('moduloTipo/'+id, {
-        headers: {
+        header: {
                 'Content-Type': 'application/json',
             }
         });

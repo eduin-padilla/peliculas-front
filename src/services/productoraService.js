@@ -2,7 +2,7 @@ import { axiosInstance }  from "../helper/axiosConfig";
 
 const getProductora = () => {
     return axiosInstance.get('moduloProductora', {
-        headers: {
+        header: {
                 'Content-Type': 'application/json',
             }
         });
@@ -10,7 +10,7 @@ const getProductora = () => {
 
 const createProductora = (data) => {
     return axiosInstance.post('moduloProductora', data, {
-        headers: {
+        header: {
                 'Content-Type': 'application/json',
             }
         });
@@ -18,7 +18,7 @@ const createProductora = (data) => {
 
 const updateProductora = (moduloProductoraId, data) => {
     return axiosInstance.put(`moduloProductora/${moduloProductoraId}`, data, {
-        headers: {
+        header: {
                 'Content-Type': 'application/json',
             }
         });
@@ -26,7 +26,7 @@ const updateProductora = (moduloProductoraId, data) => {
 
 const deleteProductora = (id) => {
     return axiosInstance.delete('moduloProductora/'+id, {
-        headers: {
+        header: {
                 'Content-Type': 'application/json',
             }
         });

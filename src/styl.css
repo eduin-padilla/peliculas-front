@@ -1,87 +1,114 @@
-
-body{
-    background-color: #d4e6f1  ;
+body {
+    background-color: #d4e6f1;
     font-family: 'Times New Roman', Times, serif;
 }
 
-hr{
-    border-top: 2px solid white;
+hr {
+    border-top: 2px solid rgb(0, 0, 0);
     border-radius: 20%;
 }
 
-.no-padding{
+.no-padding {
     padding: 0%;
 }
 
-
 .navbar-toggler-icon,
-.navbar-toggler{
-    background-color: #1f618d ;
+.navbar-toggler {
+    background-color: #1f618d;
 }
 
-
-.navbar{
+.navbar {
     background-color: #cacfd2c2;
 }
 
 .nav-link.active {
-    color: black !important;  
-    font-weight: bold;      
+    color: black !important;
+    font-weight: bold;
 }
 
-.nav-link{
-    transition: 0.2s;
-    transition: transform 0.3s ease-in-out;
+.nav-link {
+    transition: all 0.3s ease-in-out;
     font-weight: bold;
     color: black;
 }
-.nav-link:hover{
+
+.nav-link:hover {
     color: black;
     border-radius: 20%;
-    transition: 0.3s;
     background-color: #1f618d;
     transform: scale(1.2);
 }
 
-.card{
+/* ESTILOS MEJORADOS PARA LAS CARDS */
+.card {
     color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
+    transition: all 0.3s ease;
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     background-color: #1f618d;
-    border-color: rgb(202, 202, 202);
-    }
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 15px;
+    overflow: hidden;
+}
 
 .card:hover {
-    box-shadow: 0 8px 8px cadetblue;
-    transform: scale(1.2);
+    box-shadow: 0 8px 16px rgba(95, 158, 160, 0.8);
+    transform: scale(1.05);
 }
 
-
-
-.card-img-top{
-    width: 200px; 
-    height: 150px; 
-    max-width: 100%;
-    padding: 5% 5% 0%; 
+.card-img-top {
+    
     width: 100%;
-    height: 100%;
-    border-image: 50%;
+    height: 200px;
     object-fit: cover;
-    border-radius: 20px;
+    border-bottom: 2px solid rgba(202, 202, 202, 0.5);
+    transition: transform 0.5s ease;
+    border-radius: 15px 15px 0 0;
 }
 
-.col-auto{
-    margin-top : 2.8%;
+.card:hover .card-img-top {
+    transform: scale(1.03);
 }
 
-.btn{
+.card-body {
+    padding: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    flex-grow: 1;
+}
+
+.card-title {
+    color: #1a5276;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.card-text {
+    color: #154360;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.card-text strong {
+    font-weight: bold;
+    color: #1f618d;
+}
+
+/* Resto de tus estilos existentes */
+.col-auto {
+    margin-top: 2.8%;
+}
+
+.btn {
     font-weight: 600;
 }
 
-.new-media{
+.new-media {
     margin-top: 2%;
     bottom: 15px;
     font-size: 20px;
@@ -96,8 +123,7 @@ hr{
     transform: scale(1.2);
 }
 
-
-.sidebear{
+.sidebear {
     position: fixed;
     top: 0;
     left: 0;
@@ -108,17 +134,19 @@ hr{
     overflow-y: auto;
 }
 
-.sidebear-header{
+.sidebear-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
+}
+
+.fa-solid{
+    transition: 0.3s;
+}
+
+
+.hr {
+    border-top: 2px solid black;
     
 }
-
-.hr{
-    border-top: 2px solid black;
-    border-radius: 20%;
-
-}
-

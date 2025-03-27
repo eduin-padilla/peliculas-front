@@ -37,7 +37,8 @@ export const MediaView = () => {
                 }
             </div>
             {
-                openModal ? <MediaNew handleOpenModal = { handleOpenModal } />: 
+                openModal ? <MediaNew handleOpenModal = { handleOpenModal }
+                listMedia= {listMedia} />: 
                 <button className='btn btn-primary new-media' onClick = { handleOpenModal }>
                     <i className= "fa-solid fa-plus"></i>
                 </button>
