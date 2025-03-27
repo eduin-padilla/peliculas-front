@@ -135,7 +135,7 @@ export const MediaNew = ({ handleOpenModal, listMedia }) => {
                         <div className="mb-3">
                             <label className="form-label">Serial</label>
                             <input type="num" name='serial'
-                            value={Serial}
+                            value={valoresForm.Serial}
                             onChange={e => handleOnChange(e)}
                             required
                             className='form-control' />
@@ -146,7 +146,7 @@ export const MediaNew = ({ handleOpenModal, listMedia }) => {
                         <div className="mb-3">
                             <label className="form-label">Titulo</label>
                             <input type="text" name='titulo'
-                            value={Titulo}
+                            value={valoresForm.Titulo}
                             onChange={e => handleOnChange(e)}
                             required
                             className='form-control' />
@@ -157,7 +157,7 @@ export const MediaNew = ({ handleOpenModal, listMedia }) => {
                         <div className="mb-3">
                             <label className="form-label">Url</label>
                             <input type="url" name='url'
-                            value={Url}
+                            value={valoresForm.Url}
                             onChange={e => handleOnChange(e)}
                             required
                             className='form-control' />
@@ -168,7 +168,7 @@ export const MediaNew = ({ handleOpenModal, listMedia }) => {
                         <div className="mb-3">
                             <label className="form-label">imagen</label>
                             <input type="text" name='imagen'
-                            value={Imagen}
+                            value={valoresForm.Imagen}
                             onChange={e => handleOnChange(e)}
                             required
                             className='form-control' />
@@ -182,7 +182,7 @@ export const MediaNew = ({ handleOpenModal, listMedia }) => {
                         <div className="mb-3">
                             <label className="form-label">Sinopsis</label>
                             <textarea type="text" name='sinopsis'
-                            value={Sinopsis}
+                            value={valoresForm.Sinopsis}
                             onChange={e => handleOnChange(e)}
                             required
                             className='form-control' />
@@ -195,7 +195,7 @@ export const MediaNew = ({ handleOpenModal, listMedia }) => {
                         <div className="mb-3">
                             <label className="form-label">Fecha De Estreno</label>
                             <input type="date" name='Fecha De Estreno'
-                            value={FechaEstreno}
+                            value={valoresForm.FechaEstreno}
                             onChange={e => handleOnChange(e)}
                             required
                             className='form-control' />
@@ -208,7 +208,7 @@ export const MediaNew = ({ handleOpenModal, listMedia }) => {
                             <select className='form-select'
                             required
                             name='genero'
-                            value={Genero}
+                            value={valoresForm.Genero}
                             onChange={e => handleOnChange(e)}>
                             <option value="">--SELECCIONE--</option>
                             {genero.map((g) => (
@@ -226,7 +226,7 @@ export const MediaNew = ({ handleOpenModal, listMedia }) => {
                             <select className='form-select'
                             required
                             name='director'
-                            value={Director}
+                            value={valoresForm.Director}
                             onChange={e => handleOnChange(e)}>
                             <option value="">--SELECCIONE--</option>
                             {director.map((g) => (
@@ -241,7 +241,7 @@ export const MediaNew = ({ handleOpenModal, listMedia }) => {
                             <select className='form-select'
                             required
                             name='productora'
-                            value={Productora}
+                            value={valoresForm.Productora}
                             onChange={e => handleOnChange(e)}>
                             <option value="">--SELECCIONE--</option>
                             {productora.map((g) => (
@@ -256,7 +256,7 @@ export const MediaNew = ({ handleOpenModal, listMedia }) => {
                             <select className='form-select'
                             required
                             name='tipo'
-                            value={Tipo}
+                            value={valoresForm.Tipo}
                             onChange={e => handleOnChange(e)}>
                             <option value="">--SELECCIONE--</option>
                             {tipo.map((g) => (
