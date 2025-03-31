@@ -1,149 +1,118 @@
-// import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getDirector, deleteDirector } from '../../services/directorService';
+import { DirectorCard } from './DirectorCard';
+import { DirectorNew } from './DirectorNew';
+import DirectorUpdate from './DirectorUpdate';
+import Swal from 'sweetalert2';
 
-const DirectorView = () => {
-  // const [formData, setFormData] = useState({
-  //   serial: '',
-  //   titulo: '',
-  //   sinopsis: '',
-  //   fechaEstreno: '',
-  //   genero: '',
-  //   director: '',
-  //   productora: '',
-  //   tipo: ''
-  }; //)
-  
+export const DirectorView = () => {
+    const [directorList, setDirectorList] = useState([]);
+    const [openCreateModal, setOpenCreateModal] = useState(false);
+    const [openEditModal, setOpenEditModal] = useState(false);
+    const [selectedDirector, setSelectedDirector] = useState(null);
+    const [isDeleting, setIsDeleting] = useState(false);
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({
-//       ...formData,
-//       [name]: value
-//     });
-//   };
+    const listDirectores = async () => {
+        try {
+            const { data } = await getDirector();
+            setDirectorList(data);
+        } catch (error) {
+            console.log(error);
+            Swal.fire('Error', 'No se pudieron cargar los directores', 'error');
+        }
+    };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log(formData);
-//   };
+    useEffect(() => {
+        listDirectores();
+    }, []);
 
-//   return (
-//     <div className="container mt-4">
-//       <h2>Agregar Pelicula</h2>
-//       <form onSubmit={handleSubmit}>
-//         <div className="row mb-3">
-//           <div className="col-12 col-md-6">
-//             <label htmlFor="serial" className="form-label">Serial:</label>
-//             <input
-//               type="text"
-//               id="serial"
-//               name="serial"
-//               className="form-control"
-//               value={formData.serial}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-//           <div className="col-12 col-md-6">
-//             <label htmlFor="titulo" className="form-label">Título:</label>
-//             <input
-//               type="text"
-//               id="titulo"
-//               name="titulo"
-//               className="form-control"
-//               value={formData.titulo}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-//         </div>
+    const handleOpenCreateModal = () => {
+        setOpenCreateModal(!openCreateModal);
+    };
 
-//         <div className="row mb-3">
-//           <div className="col-12">
-//             <label htmlFor="sinopsis" className="form-label">Sinopsis:</label>
-//             <textarea
-//               id="sinopsis"
-//               name="sinopsis"
-//               className="form-control"
-//               value={formData.sinopsis}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-//         </div>
+    const handleOpenEditModal = (director) => {
+        setSelectedDirector(director);
+        setOpenEditModal(!openEditModal);
+    };
 
-//         <div className="row mb-3">
-//           <div className="col-12 col-md-6">
-//             <label htmlFor="fechaEstreno" className="form-label">Fecha de estreno:</label>
-//             <input
-//               type="date"
-//               id="fechaEstreno"
-//               name="fechaEstreno"
-//               className="form-control"
-//               value={formData.fechaEstreno}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-//           <div className="col-12 col-md-6">
-//             <label htmlFor="genero" className="form-label">Género:</label>
-//             <input
-//               type="text"
-//               id="genero"
-//               name="genero"
-//               className="form-control"
-//               value={formData.genero}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-//         </div>
+    const handleDeleteDirector = async (id, nombre) => {
+        try {
+            const result = await Swal.fire({
+                title: `¿Eliminar director ${nombre}?`,
+                text: "Esta acción no se puede deshacer",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            });
+    
+            if (result.isConfirmed) {
+                const response = await deleteDirector(id);
+                console.log('Respuesta del servidor:', response.data);
+                
+                await listDirectores();
+                Swal.fire(
+                    '¡Eliminado!',
+                    'El director ha sido eliminado correctamente.',
+                    'success'
+                );
+            }
+        } catch (error) {
+            console.error("Error completo:", error);
+            console.error("Respuesta de error:", error.response);
+            
+            Swal.fire(
+                'Error',
+                error.response?.data?.message || error.message || 'No se pudo eliminar el director',
+                'error'
+            );
+        }
+    };
 
-//         <div className="row mb-3">
-//           <div className="col-12 col-md-6">
-//             <label htmlFor="director" className="form-label">Director:</label>
-//             <input
-//               type="text"
-//               id="director"
-//               name="director"
-//               className="form-control"
-//               value={formData.director}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-//           <div className="col-12 col-md-6">
-//             <label htmlFor="productora" className="form-label">Productora:</label>
-//             <input
-//               type="text"
-//               id="productora"
-//               name="productora"
-//               className="form-control"
-//               value={formData.productora}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-//         </div>
+    return (
+        <div className='container-fluid'>
+            <div className="mt-3 mb-2 row row-cols-1 row-cols-md-4 g-4">
+                {directorList.map((director) => (
+                    <DirectorCard 
+                        key={director._id} 
+                        director={director}
+                        onEdit={handleOpenEditModal}
+                        onDelete={handleDeleteDirector}
+                        isDeleting={isDeleting}
+                    />
+                ))}
+            </div>
 
-//         <div className="row mb-3">
-//           <div className="col-12 col-md-6">
-//             <label htmlFor="tipo" className="form-label">Tipo:</label>
-//             <input
-//               type="text"
-//               id="tipo"
-//               name="tipo"
-//               className="form-control"
-//               value={formData.tipo}
-//               onChange={handleChange}
-//               required
-//             />
-//           </div>
-//           <div className="col-auto">
-//               <button type="submit" className="btn btn-primary">Enviar</button>
-//           </div>
-//         </div>
-//       </form>
-//     </div>
-//   );
+            {/* Modal para crear nuevo */}
+            {openCreateModal && (
+                <DirectorNew 
+                    handleOpenModal={handleOpenCreateModal}
+                    listDirectores={listDirectores} 
+                />
+            )}
 
-export default DirectorView;
+            {/* Modal para editar */}
+            {openEditModal && (
+                <DirectorUpdate 
+                    handleOpenModal={() => setOpenEditModal(false)}
+                    listDirectores={listDirectores}
+                    director={selectedDirector}
+                />
+            )}
+
+            <button 
+                className='btn btn-primary new-director' 
+                onClick={handleOpenCreateModal}
+                disabled={isDeleting}
+            >
+                {isDeleting ? (
+                    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                ) : (
+                    <i className="fa-solid fa-plus"></i>
+                )}
+            </button>
+        </div>
+    );
+};
