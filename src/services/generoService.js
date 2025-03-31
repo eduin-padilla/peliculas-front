@@ -8,7 +8,7 @@ const getGenero = () => {
         });
 }
 
-const createGenero = (data) => {
+const createGenero = ( data ) => {
     return axiosInstance.post('moduloGenero', data, {
         header: {
                 'Content-Type': 'application/json',
@@ -16,7 +16,7 @@ const createGenero = (data) => {
         });
 }
 
-const updateGenero = (moduloGeneroId, data) => {
+const updateGenero = ( moduloGeneroId, data ) => {
     return axiosInstance.put(`moduloGenero/${moduloGeneroId}`, data, {
         header: {
                 'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const updateGenero = (moduloGeneroId, data) => {
         });
 }
 
-const deleteGenero = (id) => {
+const deleteGenero = ( id ) => {
     return axiosInstance.delete('moduloGenero/'+id, {
         header: {
                 'Content-Type': 'application/json',
