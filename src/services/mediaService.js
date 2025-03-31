@@ -12,8 +12,12 @@ const createMedia = (data) => {
     });
 };
 
-const updateMedia = (moduloMediaId, data) => {
-    return axiosInstance.put(`moduloMedia/${moduloMediaId}`, data, {
+const getMediaById = (id) => {
+    return axiosInstance.get(`moduloMedia/${id}`);
+};
+
+const updateMedia = (id, data) => {
+    return axiosInstance.put(`moduloMedia/${id}`, data, {
         headers: { 'Content-Type': 'application/json' }
     });
 };
@@ -24,4 +28,11 @@ const deleteMedia = (id) => {
     });
 };
 
-export { getMedia, createMedia, updateMedia, deleteMedia };
+// Exportación única de todas las funciones
+export { 
+    getMedia, 
+    createMedia,
+    getMediaById, 
+    updateMedia, 
+    deleteMedia 
+};

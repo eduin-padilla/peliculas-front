@@ -2,7 +2,7 @@ import { axiosInstance }  from "../helper/axiosConfig";
 
 const getDirector = () => {
     return axiosInstance.get('moduloDirector', {
-        header: {
+        headers: {
                 'Content-Type': 'application/json',
             }
         });
@@ -10,7 +10,7 @@ const getDirector = () => {
 
 const createDirector = (data) => {
     return axiosInstance.post('moduloDirector', data, {
-        header: {
+        headers: {
                 'Content-Type': 'application/json',
             }
         });
@@ -18,19 +18,20 @@ const createDirector = (data) => {
 
 const updateDirector = (moduloDirectorId, data) => {
     return axiosInstance.put(`moduloDirector/${moduloDirectorId}`, data, {
-        header: {
+        headers: {
                 'Content-Type': 'application/json',
             }
         });
 }
 
 const deleteDirector = (id) => {
-    return axiosInstance.delete('moduloDirector/'+id, {
-        header: {
-                'Content-Type': 'application/json',
-            }
-        });
-}
+    return axiosInstance.delete(`moduloDirector/${id}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            // Agrega otros headers necesarios como Authorization si es requerido
+        }
+    });
+};
 
 export {
     getDirector,
