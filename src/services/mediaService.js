@@ -1,44 +1,57 @@
 import { axiosInstance } from "../helper/axiosConfig";
 
-const getMedia = () => {
-    return axiosInstance.get('moduloMedia', {
-        header: { 'Content-Type': 'application/json' }
-    });
+const getMedia = async () => {
+    try {
+        const response = await axiosInstance.get('moduloMedia', {
+            headers: { 'Content-Type': 'application/json' }
+        });
+        return { success: true, data: response.data };
+    } catch (error) {
+        return { success: false, error: error.response?.data?.message || error.message };
+    }
 };
 
-const createMedia = (data) => {
-    return axiosInstance.post('moduloMedia', data, {
-        header: { 'Content-Type': 'application/json' }
-    });
+const getMediaById = async (id) => {
+    try {
+        const response = await axiosInstance.get(`moduloMedia/${id}`);
+        return { success: true, data: response.data };
+    } catch (error) {
+        return { success: false, error: error.response?.data?.message || error.message };
+    }
 };
 
-<<<<<<< HEAD
-const updateMedia = (moduloMediaId, data) => {
-    return axiosInstance.put(`moduloMedia/${moduloMediaId}`, data, {
-        header: { 'Content-Type': 'application/json' }
-=======
-const getMediaById = (id) => {
-    return axiosInstance.get(`moduloMedia/${id}`);
+const createMedia = async (data) => {
+    try {
+        const response = await axiosInstance.post('moduloMedia', data, {
+            headers: { 'Content-Type': 'application/json' }
+        });
+        return { success: true, data: response.data };
+    } catch (error) {
+        return { success: false, error: error.response?.data?.message || error.message };
+    }
 };
 
-const updateMedia = (id, data) => {
-    return axiosInstance.put(`moduloMedia/${id}`, data, {
-        headers: { 'Content-Type': 'application/json' }
->>>>>>> c07e97c4065934aab5809739c1c0cb50c0060d67
-    });
+const updateMedia = async (id, data) => {
+    try {
+        const response = await axiosInstance.put(`moduloMedia/${id}`, data, {
+            headers: { 'Content-Type': 'application/json' }
+        });
+        return { success: true, data: response.data };
+    } catch (error) {
+        return { success: false, error: error.response?.data?.message || error.message };
+    }
 };
 
-const deleteMedia = (id) => {
-    return axiosInstance.delete(`moduloMedia/${id}`, {
-        header: { 'Content-Type': 'application/json' }
-    });
+const deleteMedia = async (id) => {
+    try {
+        await axiosInstance.delete(`moduloMedia/${id}`, {
+            headers: { 'Content-Type': 'application/json' }
+        });
+        return { success: true };
+    } catch (error) {
+        return { success: false, error: error.response?.data?.message || error.message };
+    }
 };
 
 // Exportación única de todas las funciones
-export { 
-    getMedia, 
-    createMedia,
-    getMediaById, 
-    updateMedia, 
-    deleteMedia 
-};
+export { getMedia, createMedia, getMediaById, updateMedia, deleteMedia };

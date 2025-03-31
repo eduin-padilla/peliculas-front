@@ -16,18 +16,11 @@ const getGenero = async () => {
     }
 };
 
-<<<<<<< HEAD
-const createGenero = ( data ) => {
-    return axiosInstance.post('moduloGenero', data, {
-        header: {
-                'Content-Type': 'application/json',
-
 const createGenero = async (data) => {
     try {
         const response = await axiosInstance.post('moduloGenero', data, {
             headers: {
                 'Content-Type': 'application/json'
->>>>>>> c07e97c4065934aab5809739c1c0cb50c0060d67
             }
         });
         return { success: true, data: response.data };
@@ -39,18 +32,11 @@ const createGenero = async (data) => {
     }
 };
 
-<<<<<<< HEAD
-const updateGenero = ( moduloGeneroId, data ) => {
-    return axiosInstance.put(`moduloGenero/${moduloGeneroId}`, data, {
-        header: {
-                'Content-Type': 'application/json',
-=======
 const updateGenero = async (id, data) => {
     try {
         const response = await axiosInstance.put(`moduloGenero/${id}`, data, {
             headers: {
                 'Content-Type': 'application/json'
->>>>>>> c07e97c4065934aab5809739c1c0cb50c0060d67
             }
         });
         return { success: true, data: response.data };
@@ -62,18 +48,11 @@ const updateGenero = async (id, data) => {
     }
 };
 
-<<<<<<< HEAD
-const deleteGenero = ( id ) => {
-    return axiosInstance.delete('moduloGenero/'+id, {
-        header: {
-                'Content-Type': 'application/json',
-=======
 const deleteGenero = async (id) => {
     try {
         await axiosInstance.delete(`moduloGenero/${id}`, {
             headers: {
                 'Content-Type': 'application/json'
->>>>>>> c07e97c4065934aab5809739c1c0cb50c0060d67
             }
         });
         return { success: true };
@@ -84,5 +63,7 @@ const deleteGenero = async (id) => {
         };
     }
 };
+
+
 
 export { getGenero, createGenero, updateGenero, deleteGenero };
