@@ -15,7 +15,7 @@ export const MediaCard = ({ media, onEdit, onDelete, isDeleting }) => {
                         <h5 className="card-title mb-0 text-truncate">{media.titulo}</h5>
                         <div>
                             <button 
-                                className="btn btn-outline-primary btn-sm me-2"
+                                className="btn btn-outline-primary btn-sm me-9"
                                 onClick={() => onEdit(media)}
                                 title="Editar medio"
                                 disabled={isDeleting}

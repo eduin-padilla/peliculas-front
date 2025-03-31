@@ -88,7 +88,7 @@ export const GeneroView = () => {
                 ))}
             </div>
 
-            {/* Modal para crear nuevo */}
+            {/* Modal para crear */}
             {openCreateModal && (
                 <GeneroNew 
                     handleOpenModal={handleOpenCreateModal}

@@ -33,7 +33,7 @@ export const ProductoraCard = ({ productora, onEdit, onDelete, isDeleting }) => 
                         </div>
                     </div>
                     
-                    <p><strong>País:</strong> {productora.pais}</p>
+                    
                     
                     <div className="mt-auto">
                         <hr />

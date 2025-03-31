@@ -34,12 +34,12 @@ import React from 'react'
                 <p>{tipo.descripcion}</p>
     
                 <div className="mt-auto">
-                <hr />
-                <span className="">Fecha Creación: {new Date(tipo.fechaCreacion).toLocaleDateString()}</span>
+                    <hr />
+                    <span className="">Fecha Creación: {new Date(tipo.fechaCreacion).toLocaleDateString()}</span>
                 </div>
             </div>
             </div>
         </div>
         );
     };
-  
+
