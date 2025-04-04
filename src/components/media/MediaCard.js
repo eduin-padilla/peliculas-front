@@ -13,7 +13,32 @@ export const MediaCard = ({ media, onEdit, onDelete, isDeleting }) => {
                 <div className="card-body d-flex flex-column">
                     <div className="d-flex justify-content-between align-items-center mb-2">
                         <h5 className="card-title mb-0 text-truncate">{media.titulo}</h5>
-                        <div>
+                        
+                    </div>
+                    
+                    <div className="card-text flex-grow-1">
+                        <p><strong>Serial:</strong> {media.serial}</p>
+                        <p><strong>Sinopsis:</strong> {media.sinopsis.substring(0, 1000000)}</p>
+                        <p><strong>Año:</strong> {media.añoEstreno}</p>
+                    </div>
+
+                    
+                    
+                    <div className="mt-auto">
+                        <hr />
+                        <div className="d-flex flex-column justify-content-between small">
+                            <span><strong>Género:</strong> {media.genero?.nombre ||media.genero}</span>
+                            <span><strong>Tipo:</strong> {media.tipo?.nombre || media.tipo}</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span>
+                            
+                        </span>
+                    </div>
+
+                    <div>
                             <button 
                                 className="btn btn-outline-primary btn-sm me-9"
                                 onClick={() => onEdit(media)}
@@ -35,21 +60,7 @@ export const MediaCard = ({ media, onEdit, onDelete, isDeleting }) => {
                                 )}
                             </button>
                         </div>
-                    </div>
-                    
-                    <div className="card-text flex-grow-1">
-                        <p><strong>Serial:</strong> {media.serial}</p>
-                        <p><strong>Sinopsis:</strong> {media.sinopsis.substring(0, 50)}...</p>
-                        <p><strong>Año:</strong> {media.añoEstreno}</p>
-                    </div>
-                    
-                    <div className="mt-auto">
-                        <hr />
-                        <div className="d-flex justify-content-between small">
-                            <span><strong>Género:</strong> {media.genero?.nombre || media.genero}</span>
-                            <span><strong>Tipo:</strong> {media.tipo?.nombre || media.tipo}</span>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
